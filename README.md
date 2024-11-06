@@ -4,9 +4,20 @@
 
 The source files have been uploaded as a zip file into the dropbox.
 
+CHANGE THIS!!!! --------------
+<u>Fractal types included in the program:</u>
+* Sierpinsky Triangle
+* Pythagoras Tree
+* Koch Snowflake
+* Dragon Curve
+* Hilbert Curve (bonus)
+
 <u>Keyboard controls:</u>
-* <b>w Key:</b> Launch ship forward in the direction of the cursor.
-* <b>s Key:</b> Launch ship backward in the direction opposite of the cursor.
+* <b>RIGHT ARROW:</b> Go to the next fractal.
+* <b>LEFT ARROW:</b> Go to the previous fractal.
+* <b>UP ARROW:</b> Increase depth of the current fractal (max. 10).
+* <b>DOWN ARROW:</b> Decrease depth of the current fractal (min. 0).
+--------------------------
 
 <b>Operating System:</b> macOS
 
@@ -15,7 +26,7 @@ The source files have been uploaded as a zip file into the dropbox.
 <b>Note:</b> I wrote my original code using VScode on my mac laptop. However, I have edited it using the computers in the lab room, therefore it runs perfectly on the computers' <b>VScode</b>, not the regular Visual Studio.
 
 <u>Instructions to compile the program:</u>
-1. Open the folder (453-skeleton-a2-completed) using VScode.
+1. Open the folder (453-skeleton-a3-completed) using VScode.
 2. Select the 'Unspecified' kit (if needed).
 3. Build the program using CMake (exit code should be 0).
 4. Open a new terminal.
@@ -24,4 +35,4 @@ The source files have been uploaded as a zip file into the dropbox.
 cd build
 ./453-skeleton
 ```
-6. Play the game! (make sure you are focussed on the window)
+6. Toggle between the different [fractals and their depths] using the arrow keys.  CHANGE!!!!
