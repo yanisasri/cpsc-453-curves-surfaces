@@ -43,6 +43,7 @@ public:
 		Log::info("WindowSizeCallback: width={}, height={}", width, height);
 		CallbackInterface::windowSizeCallback(width, height); // Important, calls glViewport(0, 0, width, height);
 	}
+	
 };
 
 // Can swap the callback instead of maintaining a state machine

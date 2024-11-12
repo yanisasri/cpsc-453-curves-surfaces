@@ -5,12 +5,11 @@
 The source files have been uploaded as a zip file into the dropbox.
 
 CHANGE THIS!!!! --------------
-<u>Fractal types included in the program:</u>
-* Sierpinsky Triangle
-* Pythagoras Tree
-* Koch Snowflake
-* Dragon Curve
-* Hilbert Curve (bonus)
+<u>The program includes:</u>
+* Bezier and B-Spline Curves
+* Viewing Popeline
+* Surface of Revolution
+* Tensor Product Surfaces
 
 <u>Keyboard controls:</u>
 * <b>RIGHT ARROW:</b> Go to the next fractal.
