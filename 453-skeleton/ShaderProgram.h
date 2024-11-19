@@ -25,6 +25,8 @@ public:
 	bool recompile();
 	void use() const { glUseProgram(programID); }
 
+	GLuint getID() const { return programID; }
+
 	void friend attach(ShaderProgram& sp, Shader& s);
 
 	operator GLuint() const {

@@ -153,12 +153,12 @@ CMakeFiles/453-skeleton.dir/all: thirdparty/glfw-3.4/src/CMakeFiles/glfw.dir/all
 CMakeFiles/453-skeleton.dir/all: thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/453-skeleton.dir/build.make CMakeFiles/453-skeleton.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/453-skeleton.dir/build.make CMakeFiles/453-skeleton.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target 453-skeleton"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target 453-skeleton"
 .PHONY : CMakeFiles/453-skeleton.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/453-skeleton.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/453-skeleton.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles 0
 .PHONY : CMakeFiles/453-skeleton.dir/rule
@@ -179,7 +179,7 @@ CMakeFiles/453-skeleton.dir/clean:
 thirdparty/glad-opengl-3.3-core/CMakeFiles/glad.dir/all:
 	$(MAKE) $(MAKESILENT) -f thirdparty/glad-opengl-3.3-core/CMakeFiles/glad.dir/build.make thirdparty/glad-opengl-3.3-core/CMakeFiles/glad.dir/depend
 	$(MAKE) $(MAKESILENT) -f thirdparty/glad-opengl-3.3-core/CMakeFiles/glad.dir/build.make thirdparty/glad-opengl-3.3-core/CMakeFiles/glad.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=24,25 "Built target glad"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=25,26 "Built target glad"
 .PHONY : thirdparty/glad-opengl-3.3-core/CMakeFiles/glad.dir/all
 
 # Build rule for subdir invocation for target.
@@ -231,7 +231,7 @@ thirdparty/glfw-3.4/CMakeFiles/uninstall.dir/clean:
 thirdparty/glfw-3.4/src/CMakeFiles/glfw.dir/all:
 	$(MAKE) $(MAKESILENT) -f thirdparty/glfw-3.4/src/CMakeFiles/glfw.dir/build.make thirdparty/glfw-3.4/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) $(MAKESILENT) -f thirdparty/glfw-3.4/src/CMakeFiles/glfw.dir/build.make thirdparty/glfw-3.4/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48 "Built target glfw"
 .PHONY : thirdparty/glfw-3.4/src/CMakeFiles/glfw.dir/all
 
 # Build rule for subdir invocation for target.
@@ -257,7 +257,7 @@ thirdparty/glfw-3.4/src/CMakeFiles/glfw.dir/clean:
 thirdparty/glfw-3.4/src/CMakeFiles/update_mappings.dir/all:
 	$(MAKE) $(MAKESILENT) -f thirdparty/glfw-3.4/src/CMakeFiles/update_mappings.dir/build.make thirdparty/glfw-3.4/src/CMakeFiles/update_mappings.dir/depend
 	$(MAKE) $(MAKESILENT) -f thirdparty/glfw-3.4/src/CMakeFiles/update_mappings.dir/build.make thirdparty/glfw-3.4/src/CMakeFiles/update_mappings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=48 "Built target update_mappings"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=49 "Built target update_mappings"
 .PHONY : thirdparty/glfw-3.4/src/CMakeFiles/update_mappings.dir/all
 
 # Build rule for subdir invocation for target.
@@ -283,7 +283,7 @@ thirdparty/glfw-3.4/src/CMakeFiles/update_mappings.dir/clean:
 thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/all:
 	$(MAKE) $(MAKESILENT) -f thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/build.make thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/depend
 	$(MAKE) $(MAKESILENT) -f thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/build.make thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=21,22,23 "Built target fmt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=22,23,24 "Built target fmt"
 .PHONY : thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/all
 
 # Build rule for subdir invocation for target.

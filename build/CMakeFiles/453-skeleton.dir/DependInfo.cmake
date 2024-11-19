@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Camera.cpp" "CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o" "gcc" "CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o.d"
   "/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/GLDebug.cpp" "CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o" "gcc" "CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o.d"
   "/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/GLHandles.cpp" "CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o" "gcc" "CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o.d"
   "/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Geometry.cpp" "CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o" "gcc" "CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o.d"

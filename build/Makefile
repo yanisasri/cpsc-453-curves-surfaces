@@ -239,6 +239,30 @@ fmt/fast:
 	$(MAKE) $(MAKESILENT) -f thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/build.make thirdparty/fmt-11.0.2/CMakeFiles/fmt.dir/build
 .PHONY : fmt/fast
 
+453-skeleton/Camera.o: 453-skeleton/Camera.cpp.o
+.PHONY : 453-skeleton/Camera.o
+
+# target to build an object file
+453-skeleton/Camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/453-skeleton.dir/build.make CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o
+.PHONY : 453-skeleton/Camera.cpp.o
+
+453-skeleton/Camera.i: 453-skeleton/Camera.cpp.i
+.PHONY : 453-skeleton/Camera.i
+
+# target to preprocess a source file
+453-skeleton/Camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/453-skeleton.dir/build.make CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.i
+.PHONY : 453-skeleton/Camera.cpp.i
+
+453-skeleton/Camera.s: 453-skeleton/Camera.cpp.s
+.PHONY : 453-skeleton/Camera.s
+
+# target to generate assembly for a file
+453-skeleton/Camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/453-skeleton.dir/build.make CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.s
+.PHONY : 453-skeleton/Camera.cpp.s
+
 453-skeleton/GLDebug.o: 453-skeleton/GLDebug.cpp.o
 .PHONY : 453-skeleton/GLDebug.o
 
@@ -713,6 +737,9 @@ help:
 	@echo "... fmt"
 	@echo "... glad"
 	@echo "... glfw"
+	@echo "... 453-skeleton/Camera.o"
+	@echo "... 453-skeleton/Camera.i"
+	@echo "... 453-skeleton/Camera.s"
 	@echo "... 453-skeleton/GLDebug.o"
 	@echo "... 453-skeleton/GLDebug.i"
 	@echo "... 453-skeleton/GLDebug.s"

@@ -22,6 +22,11 @@ The source files have been uploaded as a zip file into the dropbox.
 * <b>LEFT MOUSE CLICK:</b> Add a control point at the cursor's location OR select an exisiting control point.
     * If a control point has been selected, it can be moved according to the cursor's position (you MUST left click again to place the control point at your desired location), or deleted (press backspace key).
 
+<u>Viewing pipeline controls:</u>
+* <b>R KEY:</b> Reset camera.
+* <b>MOUSE SCROLL:</b> Change camera distance.
+* <b>MOUSE CLICK & DRAG:</b> Rotate camera angle about the origin.
+
 --------------------------
 
 <b>Operating System:</b> macOS
