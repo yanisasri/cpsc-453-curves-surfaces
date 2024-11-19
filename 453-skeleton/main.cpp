@@ -1,3 +1,6 @@
+// yanisa srisa-ard
+// 30150196
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -20,219 +23,340 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
+using namespace std;
+
+bool isBezier = true; // bezier=true and b-spline=false
+std::vector<glm::vec2> controlPoints;
+int selectedPointIndex = -1; // To track which point is selected
+
+// type 1 = bezier & b-spline curves
+// type 2 = viewing pipeline
+// type 3 = surface of revolution
+// type 4 = tensor product surfaces
+// type 5 = extension???
+int type = 1;
+
 class CurveEditorCallBack : public CallbackInterface {
 public:
-	CurveEditorCallBack() {}
+	CurveEditorCallBack(GLFWwindow* window) : window(window) {}
 
+	// virtual void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	virtual void keyCallback(int key, int scancode, int action, int mods) override {
-		Log::info("KeyCallback: key={}, action={}", key, action);
+		if (type == 1) {
+			// press R key to reset control points
+			if (key == GLFW_KEY_R && action == GLFW_PRESS) {
+				cout << "Control points have reset." << endl;
+				controlPoints.clear(); // reset control points
+			}
+			
+			// press UP key to toggle between bezier and b-spline curves
+			if (key == GLFW_KEY_UP && action == GLFW_PRESS) {
+					isBezier = !isBezier; // change curve type
+					if (isBezier) { cout << "Changed to BEZIER CURVE." << endl; }
+					else { cout << "Changed to B-SPLINE CURVE." << endl; }
+			}
+			
+			// when a control point is selected, press BACKSPACE key to delete control point
+			if (selectedPointIndex != -1 && key == GLFW_KEY_BACKSPACE) {
+                controlPoints.erase(controlPoints.begin() + selectedPointIndex); // remove selected point
+                cout << "Deleted control point at index: " << selectedPointIndex << endl; // debugging
+                selectedPointIndex = -1; // deselect
+            }
+		}
+
+		// press RIGHT arrow key to change to the next exercise/assignment part
+		if (key == GLFW_KEY_RIGHT && action == GLFW_PRESS) {
+			type += 1;
+			if (type == 6) { type = 1; }
+
+			cout << "Changed to: ";
+
+			if (type == 1) { cout << "BEZIER & B-SPLINE CURVES" << endl; }
+			else if (type == 2) { cout << "VIEWING PIPELINE" << endl; }
+			else if (type == 3) { cout << "SURFACE OF REVOLUTION" << endl;}
+			else if (type == 4) { cout << "TENSOR PRODUCT SURFACES" << endl; }
+			else if (type == 5) { cout << "EXTENSION???" << endl; }
+        }
+
+		// press LEFT arrow key to change to the previous exercise/assignment part
+		if (key == GLFW_KEY_LEFT && action == GLFW_PRESS) {
+			type -= 1;
+			if (type == 0) { type = 5; }
+
+			cout << "Changed to: ";
+
+			if (type == 1) { cout << "BEZIER & B-SPLINE CURVES" << endl; }
+			else if (type == 2) { cout << "VIEWING PIPELINE" << endl; }
+			else if (type == 3) { cout << "SURFACE OF REVOLUTION" << endl;}
+			else if (type == 4) { cout << "TENSOR PRODUCT SURFACES" << endl; }
+			else if (type == 5) { cout << "EXTENSION???" << endl; }
+        }
 	}
 
+	// virtual void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
 	virtual void mouseButtonCallback(int button, int action, int mods) override {
-		Log::info("MouseButtonCallback: button={}, action={}", button, action);
+		// cout << "Mouse button pressed: " << button << ", action: " << action << endl; // debugging
+		
+		// if (action == GLFW_PRESS) {
+		// 	cout << "Mouse button action detected." << endl; // debugging
+		// }
+
+		// LEFT mouse click to add control points or select an existing control point
+		// ** a selected control point can be moved (move cursor & press left click again) or deleted (presss BACKSPACE key)
+		if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+            double xpos, ypos;
+            glfwGetCursorPos(window, &xpos, &ypos);
+            int width, height;
+            glfwGetWindowSize(window, &width, &height);
+            float normX = (xpos / width) * 2.0f - 1.0f;
+            float normY = 1.0f - (ypos / height) * 2.0f;
+
+            // check if a control point is clicked
+            for (size_t i = 0; i < controlPoints.size(); i++) {
+                if (glm::distance(controlPoints[i], glm::vec2(normX, normY)) < 0.05f) {
+                    if (selectedPointIndex == i) {
+                        // deselect the point if it's already selected
+                        selectedPointIndex = -1;
+                        cout << "Deselected control point: (" << normX << ", " << normY << ")" << endl; // debugging
+                    } else {
+                        selectedPointIndex = i;
+                        cout << "Selected control point: (" << normX << ", " << normY << ")" << endl; // debugging
+                    }
+                    return;
+                }
+            }
+
+            // if no point is selected, add a new control point
+            controlPoints.push_back(glm::vec2(normX, normY));
+            cout << "Added control point: (" << normX << ", " << normY << ")" << endl; // debugging
+            cout << "Number of control points: " << controlPoints.size() << endl; // debugging
+        }
 	}
 
+	// virtual void cursorPosCallback(GLFWwindow* window, double xpos, double ypos) {
 	virtual void cursorPosCallback(double xpos, double ypos) override {
-		Log::info("CursorPosCallback: xpos={}, ypos={}", xpos, ypos);
-	}
-
-	virtual void scrollCallback(double xoffset, double yoffset) override {
-		Log::info("ScrollCallback: xoffset={}, yoffset={}", xoffset, yoffset);
-	}
-
-	virtual void windowSizeCallback(int width, int height) override {
-		Log::info("WindowSizeCallback: width={}, height={}", width, height);
-		CallbackInterface::windowSizeCallback(width, height); // Important, calls glViewport(0, 0, width, height);
-	}
-};
-
-// Can swap the callback instead of maintaining a state machine
-/*
-class TurnTable3DViewerCallBack : public CallbackInterface {
-
-public:
-	TurnTable3DViewerCallBack() {}
-
-	virtual void keyCallback(int key, int scancode, int action, int mods) {}
-	virtual void mouseButtonCallback(int button, int action, int mods) {}
-	virtual void cursorPosCallback(double xpos, double ypos) {}
-	virtual void scrollCallback(double xoffset, double yoffset) {}
-	virtual void windowSizeCallback(int width, int height) {
-
-		// The CallbackInterface::windowSizeCallback will call glViewport for us
-		CallbackInterface::windowSizeCallback(width, height);
-	}
-private:
-
-};
-*/
-
-class CurveEditorPanelRenderer : public PanelRendererInterface {
-public:
-	CurveEditorPanelRenderer()
-		: inputText(""), buttonClickCount(0), sliderValue(0.0f),
-		dragValue(0.0f), inputValue(0.0f), checkboxValue(false),
-		comboSelection(0)
-	{
-		// Initialize options for the combo box
-		options[0] = "Option 1";
-		options[1] = "Option 2";
-		options[2] = "Option 3";
-
-		// Initialize color (white by default)
-		colorValue[0] = 1.0f; // R
-		colorValue[1] = 1.0f; // G
-		colorValue[2] = 1.0f; // B
-	}
-
-	virtual void render() override {
-		// Color selector
-		ImGui::ColorEdit3("Select Background Color", colorValue); // RGB color selector
-		ImGui::Text("Selected Color: R: %.3f, G: %.3f, B: %.3f", colorValue[0], colorValue[1], colorValue[2]);
-
-		// Text input
-		ImGui::InputText("Input Text", inputText, IM_ARRAYSIZE(inputText));
-
-		// Display the input text
-		ImGui::Text("You entered: %s", inputText);
-
-		// Button
-		if (ImGui::Button("Click Me")) {
-			buttonClickCount++;
+		if (selectedPointIndex != -1) {
+			int width, height;
+			glfwGetWindowSize(window, &width, &height);
+			float normX = (xpos / width) * 2.0f - 1.0f;
+			float normY = 1.0f - (ypos / height) * 2.0f;
+			controlPoints[selectedPointIndex] = glm::vec2(normX, normY); // update position
 		}
-		ImGui::Text("Button clicked %d times", buttonClickCount);
-
-		// Scrollable block
-		ImGui::TextWrapped("Scrollable Block:");
-		ImGui::BeginChild("ScrollableChild", ImVec2(0, 100), true); // Create a scrollable child
-		for (int i = 0; i < 20; i++) {
-			ImGui::Text("Item %d", i);
-		}
-		ImGui::EndChild();
-
-		// Float slider
-		ImGui::SliderFloat("Float Slider", &sliderValue, 0.0f, 100.0f, "Slider Value: %.3f");
-
-		// Float drag
-		ImGui::DragFloat("Float Drag", &dragValue, 0.1f, 0.0f, 100.0f, "Drag Value: %.3f");
-
-		// Float input
-		ImGui::InputFloat("Float Input", &inputValue, 0.1f, 1.0f, "Input Value: %.3f");
-
-		// Checkbox
-		ImGui::Checkbox("Enable Feature", &checkboxValue);
-		ImGui::Text("Feature Enabled: %s", checkboxValue ? "Yes" : "No");
-
-		// Combo box
-		ImGui::Combo("Select an Option", &comboSelection, options, IM_ARRAYSIZE(options));
-		ImGui::Text("Selected: %s", options[comboSelection]);
-
-		// Displaying current values
-		ImGui::Text("Slider Value: %.3f", sliderValue);
-		ImGui::Text("Drag Value: %.3f", dragValue);
-		ImGui::Text("Input Value: %.3f", inputValue);
 	}
 
-	glm::vec3 getColor() const {
-		return glm::vec3(colorValue[0], colorValue[1], colorValue[2]);
-	}
+	// virtual void keyCallback(int key, int scancode, int action, int mods) override {
+	// 	Log::info("KeyCallback: key={}, action={}", key, action);
+	// }
+
+	// virtual void mouseButtonCallback(int button, int action, int mods) override {
+	// 	Log::info("MouseButtonCallback: button={}, action={}", button, action);
+	// }
+
+	// virtual void cursorPosCallback(double xpos, double ypos) override {
+	// 	Log::info("CursorPosCallback: xpos={}, ypos={}", xpos, ypos);
+	// }
+
+	// virtual void scrollCallback(double xoffset, double yoffset) override {
+	// 	Log::info("ScrollCallback: xoffset={}, yoffset={}", xoffset, yoffset);
+	// }
+
+	// virtual void windowSizeCallback(int width, int height) override {
+	// 	Log::info("WindowSizeCallback: width={}, height={}", width, height);
+	// 	CallbackInterface::windowSizeCallback(width, height); // Important, calls glViewport(0, 0, width, height);
+	// }
 
 private:
-	float colorValue[3];  // Array for RGB color values
-	char inputText[256];  // Buffer for input text
-	int buttonClickCount; // Count button clicks
-	float sliderValue;    // Value for float slider
-	float dragValue;      // Value for drag input
-	float inputValue;     // Value for float input
-	bool checkboxValue;   // Value for checkbox
-	int comboSelection;   // Index of selected option in combo box
-	const char* options[3]; // Options for the combo box
+	GLFWwindow* window;
 };
+
+void drawPoint(const glm::vec2& point, float r, float g, float b, GLuint shaderProgram) {
+    glUseProgram(shaderProgram); // ensure the shader program is active
+
+    float vertices[] = {
+        point.x, point.y, 0.0f, r, g, b
+    };
+
+    GLuint VAO, VBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    glPointSize(10.0f);
+    glDrawArrays(GL_POINTS, 0, 1);
+
+    glDeleteBuffers(1, &VBO);
+    glDeleteVertexArrays(1, &VAO);
+}
+
+void drawBezierCurve(const std::vector<glm::vec2>& points, GLuint shaderProgram) {
+    // cout << "Drawing Bezier Curve..." << endl; // debugging
+
+	if (points.size() < 2) return;
+
+    std::vector<float> vertices;
+    for (float t = 0.0f; t <= 1.0f; t += 0.01f) {
+        std::vector<glm::vec2> temp = points;
+        while (temp.size() > 1) {
+            std::vector<glm::vec2> next;
+            for (size_t i = 0; i < temp.size() - 1; ++i) {
+                next.push_back((1 - t) * temp[i] + t * temp[i + 1]);
+            }
+            temp = next;
+        }
+        vertices.push_back(temp[0].x);
+        vertices.push_back(temp[0].y);
+        vertices.push_back(0.0f);
+        vertices.push_back(1.0f); // red
+        vertices.push_back(0.0f); // green
+        vertices.push_back(0.0f); // blue
+    }
+
+    GLuint VAO, VBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    glUseProgram(shaderProgram);
+    glDrawArrays(GL_LINE_STRIP, 0, vertices.size() / 6);
+
+    glDeleteBuffers(1, &VBO);
+    glDeleteVertexArrays(1, &VAO);
+}
+
+void chaikinAlgorithm(const std::vector<glm::vec2>& controlPoints, std::vector<glm::vec2>& outputPoints, int iterations) {
+    outputPoints = controlPoints;
+
+    for (int iter = 0; iter < iterations; ++iter) {
+        std::vector<glm::vec2> newPoints;
+
+        for (size_t i = 0; i < outputPoints.size() - 1; ++i) {
+            // Calculate the new points using the Chaikin algorithm
+            glm::vec2 p0 = outputPoints[i];
+            glm::vec2 p1 = outputPoints[i + 1];
+
+            glm::vec2 q = 0.75f * p0 + 0.25f * p1; // Q point
+            glm::vec2 r = 0.25f * p0 + 0.75f * p1; // R point
+
+            newPoints.push_back(q);
+            newPoints.push_back(r);
+        }
+        outputPoints = newPoints; // Update to new points for the next iteration
+    }
+}
+
+void drawBSplineCurve(const std::vector<glm::vec2>& points, GLuint shaderProgram) {
+    // cout << "Drawing B-Spline Curve..." << endl; // debugging
+	
+	if (points.size() < 2) return;
+
+	int iterations = 5;
+    std::vector<glm::vec2> refinedPoints;
+    chaikinAlgorithm(points, refinedPoints, iterations);
+
+    std::vector<float> vertices;
+    for (const auto& point : refinedPoints) {
+        vertices.push_back(point.x);
+        vertices.push_back(point.y);
+        vertices.push_back(0.0f);
+        vertices.push_back(0.0f); // red
+        vertices.push_back(0.0f); // green
+        vertices.push_back(1.0f); // blue
+    }
+
+    GLuint VAO, VBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    glUseProgram(shaderProgram);
+    glDrawArrays(GL_LINE_STRIP, 0, vertices.size() / 6);
+
+    glDeleteBuffers(1, &VBO);
+    glDeleteVertexArrays(1, &VAO);
+}
+
 
 int main() {
 	Log::debug("Starting main");
 
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
 	// WINDOW
 	glfwInit();
-	Window window(800, 800, "CPSC 453: Assignment 3");
-	Panel panel(window.getGLFWwindow());
+	
+	 // debugging
+	if (!glfwInit()) {
+    	cout << "Failed to initialize GLFW" << endl;
+    	return -1;
+	}
 
-	//GLDebug::enable();
+	Window window(800, 800, "CPSC 453: Assignment 3");
 
 	// CALLBACKS
-	auto curve_editor_callback = std::make_shared<CurveEditorCallBack>();
-	//auto turn_table_3D_viewer_callback = std::make_shared<TurnTable3DViewerCallBack>();
-
-	auto curve_editor_panel_renderer = std::make_shared<CurveEditorPanelRenderer>();
-
+	// auto curve_editor_callback = std::make_shared<CurveEditorCallBack>(window);
+	auto curve_editor_callback = std::make_shared<CurveEditorCallBack>(window.getGLFWwindow());
+	
 	//Set callback to window
 	window.setCallbacks(curve_editor_callback);
-	// Can swap the callback instead of maintaining a state machine
-	//window.setCallbacks(turn_table_3D_viewer_callback);
-
-	//Panel inputs
-	panel.setPanelRenderer(curve_editor_panel_renderer);
-
+	
 	ShaderProgram shader_program_default(
 		"shaders/test.vert",
 		"shaders/test.frag"
 	);
 
-	std::vector<glm::vec3> cp_positions_vector = {
-		{-.5f, -.5f, 0.f},
-		{ .5f, -.5f, 0.f},
-		{ .5f,  .5f, 0.f},
-		{-.5f,  .5f, 0.f}
-	};
-	glm::vec3 cp_point_colour	= { 1.f,0.f,0.f };
-	glm::vec3 cp_line_colour	= { 0.f,1.f,0.f };
-
-	CPU_Geometry cp_point_cpu;
-	cp_point_cpu.verts	= cp_positions_vector;
-	cp_point_cpu.cols	= std::vector<glm::vec3>(cp_point_cpu.verts.size(), cp_point_colour);
-	GPU_Geometry cp_point_gpu;
-	cp_point_gpu.setVerts(cp_point_cpu.verts);
-	cp_point_gpu.setCols(cp_point_cpu.cols);
-
-	CPU_Geometry cp_line_cpu;
-	cp_line_cpu.verts	= cp_positions_vector; // We are using GL_LINE_STRIP (change this if you want to use GL_LINES)
-	cp_line_cpu.cols	= std::vector<glm::vec3>(cp_point_cpu.verts.size(), cp_line_colour);
-	GPU_Geometry cp_line_gpu;
-	cp_line_gpu.setVerts(cp_line_cpu.verts);
-	cp_line_gpu.setCols(cp_line_cpu.cols);
-
 	while (!window.shouldClose()) {
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		glfwPollEvents();
-		glm::vec3 background_colour = curve_editor_panel_renderer->getColor();
+		// cout << "Polling events..." << endl; // debugging
+		// cout << "Number of control points: " << controlPoints.size() << endl; // debugging
 
-		//------------------------------------------
-		glEnable(GL_LINE_SMOOTH);
-		glEnable(GL_DEPTH_TEST);
-		glEnable(GL_FRAMEBUFFER_SRGB);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		glClearColor(background_colour.r, background_colour.g, background_colour.b, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		//------------------------------------------
-		
-		// Use the default shader (can use different ones for different objects)
-		shader_program_default.use();
+		if (type == 1) {
+			// cout << "Rendering control points..." << endl; // debugging
 
-		//Render control points
-		cp_point_gpu.bind();
-		glPointSize(15.f);
-		glDrawArrays(GL_POINTS, 0, cp_point_cpu.verts.size());
+			// bezier & b-spline curve
+			for (const auto& point : controlPoints) {
+				drawPoint(point, 0.0f, 1.0f, 0.0f, shader_program_default); // green points
+			}
 
-		//Render curve connecting control points
-		cp_line_gpu.bind();
-		//glLineWidth(10.f); //May do nothing (like it does on my computer): https://community.khronos.org/t/3-0-wide-lines-deprecated/55426
-		glDrawArrays(GL_LINE_STRIP, 0, cp_line_cpu.verts.size());
-		
-		//------------------------------------------
-		glDisable(GL_FRAMEBUFFER_SRGB); // disable sRGB for things like imgui
-		panel.render();
-		//------------------------------------------
+			if (isBezier) {
+				drawBezierCurve(controlPoints, shader_program_default);
+			} else {
+				drawBSplineCurve(controlPoints, shader_program_default);
+			}
+		} else {
+			cout << "implement later" << endl;
+		}
+
 		window.swapBuffers();
-		//------------------------------------------
 	}
 
 	glfwTerminate();

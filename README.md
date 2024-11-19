@@ -4,25 +4,31 @@
 
 The source files have been uploaded as a zip file into the dropbox.
 
-CHANGE THIS!!!! --------------
 <u>The program includes:</u>
 * Bezier and B-Spline Curves
-* Viewing Popeline
+* Viewing Pipeline
 * Surface of Revolution
 * Tensor Product Surfaces
+* Extension??? maybe
 
-<u>Keyboard controls:</u>
-* <b>RIGHT ARROW:</b> Go to the next fractal.
-* <b>LEFT ARROW:</b> Go to the previous fractal.
-* <b>UP ARROW:</b> Increase depth of the current fractal (max. 10).
-* <b>DOWN ARROW:</b> Decrease depth of the current fractal (min. 0).
+<u>General keyboard controls:</u>
+* <b>RIGHT ARROW KEY:</b> Go to the next assignment part/exercise.
+* <b>LEFT ARROW KEY:</b> Go to the previous assignment part/exercise.
+
+<u>Bezier & B-Spline mouse and keyboard controls:</u>
+* <b>R KEY:</b> Reset control points.
+* <b>UP ARROW KEY:</b> Toggle between Bezier and B-Spline curves (i.e. change to B-Spline from Bezier curve).
+* <b>BACKSPACE KEY:</b> Delete a selected control point.
+* <b>LEFT MOUSE CLICK:</b> Add a control point at the cursor's location OR select an exisiting control point.
+    * If a control point has been selected, it can be moved according to the cursor's position (you MUST left click again to place the control point at your desired location), or deleted (press backspace key).
+
 --------------------------
 
 <b>Operating System:</b> macOS
 
 <b>CMake version:</b> 3.30.3
 
-<b>Note:</b> I wrote my original code using VScode on my mac laptop. However, I have edited it using the computers in the lab room, therefore it runs perfectly on the computers' <b>VScode</b>, not the regular Visual Studio.
+<b>Note:</b> I wrote my original code using VScode on my mac laptop. However, I have edited it using the computers in the lab room, therefore it runs perfectly on the computers' <b>VScode</b>, not the regular Visual Studio (not tested so not confirmed).
 
 <u>Instructions to compile the program:</u>
 1. Open the folder (453-skeleton-a3-completed) using VScode.
@@ -34,4 +40,3 @@ CHANGE THIS!!!! --------------
 cd build
 ./453-skeleton
 ```
-6. Toggle between the different [fractals and their depths] using the arrow keys.  CHANGE!!!!
