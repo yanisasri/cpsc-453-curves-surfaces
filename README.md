@@ -14,10 +14,10 @@ The source files have been uploaded as a zip file into the dropbox.
 <u>General keyboard controls:</u>
 * <b>RIGHT ARROW KEY:</b> Go to the next assignment part/exercise.
 * <b>LEFT ARROW KEY:</b> Go to the previous assignment part/exercise.
+* <b>UP ARROW KEY:</b> Toggle between Bezier and B-Spline curves (only for part 1 and 2). 
 
 <u>Bezier & B-Spline mouse and keyboard controls:</u>
 * <b>R KEY:</b> Reset control points.
-* <b>UP ARROW KEY:</b> Toggle between Bezier and B-Spline curves (i.e. change to B-Spline from Bezier curve).
 * <b>BACKSPACE KEY:</b> Delete a selected control point.
 * <b>LEFT MOUSE CLICK:</b> Add a control point at the cursor's location OR select an exisiting control point.
     * If a control point has been selected, it can be moved according to the cursor's position (you MUST left click again to place the control point at your desired location), or deleted (press backspace key).
@@ -25,8 +25,17 @@ The source files have been uploaded as a zip file into the dropbox.
 <u>Viewing pipeline controls:</u>
 * <b>R KEY:</b> Reset camera.
 * <b>MOUSE SCROLL:</b> Change camera distance.
-* <b>MOUSE CLICK & DRAG:</b> Rotate camera angle about the origin.
+* <b>LEFT MOUSE CLICK & MOVE:</b> Rotate camera angle (you MUST left click again to keep the camera at a certain angle).
 
+<u>Surface of revolution controls:</u>
+* <b>DOWN ARROW KEY:</b> Toggle between the wireframe and solid surface view.
+* <b>MOUSE SCROLL:</b> Change camera distance.
+* <b>LEFT MOUSE CLICK & MOVE:</b> Rotate camera angle (you MUST left click again to keep the camera at a certain angle).
+
+
+Notes: 
+* The program outputs into the console when a key is pressed (e.g. changed from bezier to b-spline curve, added control point, reset control points, etc.).
+* The Bezier curve is red and the B-Spline curve is blue.
 --------------------------
 
 <b>Operating System:</b> macOS

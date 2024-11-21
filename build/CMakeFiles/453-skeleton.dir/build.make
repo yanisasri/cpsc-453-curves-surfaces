@@ -69,24 +69,10 @@ include CMakeFiles/453-skeleton.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/453-skeleton.dir/flags.make
 
-CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
-CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Camera.cpp
-CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Camera.cpp
-
-CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Camera.cpp > CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.i
-
-CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Camera.cpp -o CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.s
-
 CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/GLDebug.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/GLDebug.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.i: cmake_force
@@ -100,7 +86,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/GLHandles.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/GLHandles.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.i: cmake_force
@@ -114,7 +100,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Geometry.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Geometry.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.i: cmake_force
@@ -128,7 +114,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Panel.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Panel.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.i: cmake_force
@@ -142,7 +128,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/Panel.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Shader.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Shader.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.i: cmake_force
@@ -156,7 +142,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/Shader.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/ShaderProgram.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/ShaderProgram.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.i: cmake_force
@@ -170,7 +156,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/ShaderProgram.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Texture.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Texture.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.i: cmake_force
@@ -184,7 +170,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/Texture.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/VertexArray.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/VertexArray.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.i: cmake_force
@@ -198,7 +184,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/VertexArray.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/VertexBuffer.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/VertexBuffer.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.i: cmake_force
@@ -212,7 +198,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/VertexBuffer.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Window.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Window.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.i: cmake_force
@@ -226,7 +212,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/Window.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/main.cpp
 CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o -MF CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o.d -o CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/main.cpp
 
 CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.i: cmake_force
@@ -240,7 +226,7 @@ CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.s: cmake_force
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.o -MF CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.o.d -o CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp
 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.cpp.i: cmake_force
@@ -254,7 +240,7 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.o -MF CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.o.d -o CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp
 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.cpp.i: cmake_force
@@ -268,7 +254,7 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui.cpp
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.o -MF CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.o.d -o CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui.cpp
 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.i: cmake_force
@@ -282,7 +268,7 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui.cpp.s: cmake_f
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.o -MF CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.o.d -o CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp
 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.i: cmake_force
@@ -296,7 +282,7 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_demo.cpp.s: cm
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.o -MF CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.o.d -o CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp
 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.i: cmake_force
@@ -310,7 +296,7 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_draw.cpp.s: cm
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.o -MF CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.o.d -o CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp
 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.i: cmake_force
@@ -324,7 +310,7 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_tables.cpp.s: 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.o -MF CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.o.d -o CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp
 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.i: cmake_force
@@ -338,7 +324,7 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/imgui_widgets.cpp.s:
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.o: CMakeFiles/453-skeleton.dir/flags.make
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.o: /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.o: CMakeFiles/453-skeleton.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.o -MF CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.o.d -o CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.o -c /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp
 
 CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdlib.cpp.i: cmake_force
@@ -351,7 +337,6 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdli
 
 # Object files for target 453-skeleton
 453__skeleton_OBJECTS = \
-"CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o" \
 "CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o" \
 "CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o" \
 "CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o" \
@@ -375,7 +360,6 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdli
 # External object files for target 453-skeleton
 453__skeleton_EXTERNAL_OBJECTS =
 
-453-skeleton: CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o
 453-skeleton: CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o
 453-skeleton: CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o
 453-skeleton: CMakeFiles/453-skeleton.dir/453-skeleton/Geometry.cpp.o
@@ -400,7 +384,7 @@ CMakeFiles/453-skeleton.dir/thirdparty/imgui-1.91.4-docking/misc/cpp/imgui_stdli
 453-skeleton: thirdparty/glfw-3.4/src/libglfw3.a
 453-skeleton: thirdparty/fmt-11.0.2/libfmtd.a
 453-skeleton: CMakeFiles/453-skeleton.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable 453-skeleton"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable 453-skeleton"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/453-skeleton.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

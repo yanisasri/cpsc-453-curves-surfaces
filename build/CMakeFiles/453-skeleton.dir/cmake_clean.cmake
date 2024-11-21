@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "453-skeleton"
   "453-skeleton.pdb"
-  "CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o"
-  "CMakeFiles/453-skeleton.dir/453-skeleton/Camera.cpp.o.d"
   "CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o"
   "CMakeFiles/453-skeleton.dir/453-skeleton/GLDebug.cpp.o.d"
   "CMakeFiles/453-skeleton.dir/453-skeleton/GLHandles.cpp.o"

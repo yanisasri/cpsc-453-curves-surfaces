@@ -1093,7 +1093,6 @@ CMakeFiles/453-skeleton.dir/453-skeleton/main.cpp.o: \
   /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_glfw.h \
   /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/imgui-1.91.4-docking/backends/imgui_impl_opengl3.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/TargetConditionals.h \
-  /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/453-skeleton/Camera.h \
   /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/glm-0.9.9.7/glm/gtc/type_ptr.hpp \
   /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/glm-0.9.9.7/glm/gtc/../mat2x2.hpp \
   /Users/yanisasrisa-ard/Desktop/cpsc-453-curves-surfaces/thirdparty/glm-0.9.9.7/glm/gtc/../mat2x3.hpp \
