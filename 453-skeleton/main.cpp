@@ -43,7 +43,8 @@ int type = 1;
 
 class Camera {
 public:
-    Camera(glm::vec3 target = glm::vec3(0.0f, 0.0f, 0.0f)) : target(target), up(0.0f, 1.0f, 0.0f), distance(2.5f), azimuth(0.0f), elevation(glm::radians(30.0f)) {
+    Camera(glm::vec3 target = glm::vec3(0.0f, 0.0f, 0.0f)) 
+	: target(target), up(0.0f, 1.0f, 0.0f), distance(2.5f), azimuth(0.0f), elevation(glm::radians(30.0f)) {
         updateCameraPosition();
     }
 
@@ -166,12 +167,6 @@ public:
 	}
 
 	virtual void mouseButtonCallback(int button, int action, int mods) override {
-		// cout << "Mouse button pressed: " << button << ", action: " << action << endl; // debugging
-		
-		// if (action == GLFW_PRESS) {
-		// 	cout << "Mouse button action detected." << endl; // debugging
-		// }
-
 		if (type == 1) {
 			// LEFT mouse click to add control points or select an existing control point
 			// ** a selected control point can be moved (move cursor & press left click again) or deleted (presss BACKSPACE key)
@@ -189,10 +184,10 @@ public:
 						if (selectedPointIndex == i) {
 							// deselect the point if it's already selected
 							selectedPointIndex = -1;
-							cout << "Deselected control point: (" << normX << ", " << normY << ")" << endl; // debugging
+							// cout << "Deselected control point: (" << normX << ", " << normY << ")" << endl; // debugging
 						} else {
 							selectedPointIndex = i;
-							cout << "Selected control point: (" << normX << ", " << normY << ")" << endl; // debugging
+							// cout << "Selected control point: (" << normX << ", " << normY << ")" << endl; // debugging
 						}
 						return;
 					}
@@ -200,17 +195,19 @@ public:
 
 				// if no point is selected, add a new control point
 				controlPoints.push_back(glm::vec2(normX, normY));
-				cout << "Added control point: (" << normX << ", " << normY << ")" << endl; // debugging
-				cout << "Number of control points: " << controlPoints.size() << endl; // debugging
+				// cout << "Added control point: (" << normX << ", " << normY << ")" << endl; // debugging
+				// cout << "Number of control points: " << controlPoints.size() << endl; // debugging
 			}
 		} else if ((type == 2) || (type == 3)) {
 			if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
 				cameraControlActive = !cameraControlActive; 
-				if (cameraControlActive) {
-					std::cout << "Camera control activated." << std::endl;
-				} else {
-					std::cout << "Camera control deactivated." << std::endl;
-				}
+				
+				// // debugging
+				// if (cameraControlActive) {
+				// 	std::cout << "Camera control activated." << std::endl;
+				// } else {
+				// 	std::cout << "Camera control deactivated." << std::endl;
+				// }
 			}
 		}
 	}
@@ -252,7 +249,7 @@ private:
 };
 
 void drawPoint(const glm::vec2& point, float r, float g, float b, GLuint shaderProgram) {
-    glUseProgram(shaderProgram); // ensure the shader program is active
+    glUseProgram(shaderProgram);
 
     float vertices[] = {
         point.x, point.y, 0.0f, r, g, b
@@ -279,9 +276,7 @@ void drawPoint(const glm::vec2& point, float r, float g, float b, GLuint shaderP
 }
 
 void drawBezierCurve(const std::vector<glm::vec2>& points, GLuint shaderProgram) {
-    // cout << "Drawing Bezier Curve..." << endl; // debugging
-
-	if (points.size() < 2) return;
+    if (points.size() < 2) return;
 
     std::vector<float> vertices;
     for (float t = 0.0f; t <= 1.0f; t += 0.01f) {
@@ -343,9 +338,7 @@ void chaikinAlgorithm(const std::vector<glm::vec2>& controlPoints, std::vector<g
 }
 
 void drawBSplineCurve(const std::vector<glm::vec2>& points, GLuint shaderProgram) {
-    // cout << "Drawing B-Spline Curve..." << endl; // debugging
-	
-	if (points.size() < 2) return;
+    if (points.size() < 2) return;
 
 	int iterations = 5;
     std::vector<glm::vec2> refinedPoints;
@@ -425,7 +418,7 @@ void drawSurfaceOfRevolution(const std::vector<glm::vec2>& controlPoints, GLuint
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
-    // Draw the surface using triangle strips
+    // draw the surface using triangle strips
     for (size_t i = 0; i < controlPoints.size() - 1; ++i) {
         glDrawArrays(GL_TRIANGLE_STRIP, i * (segments + 1), (segments + 1) * 2);
     }
@@ -444,23 +437,12 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// WINDOW
 	glfwInit();
 	
-	// // debugging
-	// if (!glfwInit()) {
-    // 	cout << "Failed to initialize GLFW" << endl;
-    // 	return -1;
-	// }
-
 	Window window(800, 800, "CPSC 453: Assignment 3");
-
 	Camera camera;
 
-	// CALLBACKS
 	auto curve_editor_callback = std::make_shared<CurveEditorCallBack>(window.getGLFWwindow(), camera);
-	
-	//Set callback to window
 	window.setCallbacks(curve_editor_callback);
 	
 	ShaderProgram shader_program_default(
@@ -477,15 +459,13 @@ int main() {
 
 	glm::mat4 projection, view;
 
-	cout << "1. BEZIER & B-SPLINE CURVES" << endl;
+	cout << "Started program: 1. BEZIER & B-SPLINE CURVES" << endl;
 	
 	while (!window.shouldClose()) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glfwPollEvents();
-		// cout << "Polling events..." << endl; // debugging
-		// cout << "Number of control points: " << controlPoints.size() << endl; // debugging
-
+		
 		if (type == 1) {
 			// bezier & b-spline curve
 			projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f);
@@ -522,6 +502,12 @@ int main() {
             }
 		} else if (type == 3) {
 			// surface of revolution
+			projection = camera.getProjectionMatrix(aspectRatio);
+			view = camera.getViewMatrix();
+
+            glUniformMatrix4fv(glGetUniformLocation(shader_program_default, "view"), 1, GL_FALSE, glm::value_ptr(view));
+            glUniformMatrix4fv(glGetUniformLocation(shader_program_default, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+			
 			glEnable(GL_LINE_SMOOTH);
 			glEnable(GL_DEPTH_TEST);
 			glEnable(GL_FRAMEBUFFER_SRGB);
