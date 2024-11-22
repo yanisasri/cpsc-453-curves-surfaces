@@ -34,7 +34,7 @@ The source files have been uploaded as a zip file into the dropbox.
 
 
 <u>Notes:</u>
-* The program outputs into the console when a key is pressed (e.g. changed from bezier to b-spline curve, added control point, reset control points, etc.).
+* The program outputs into the console when a key is pressed (e.g. changed from bezier to b-spline curve, camera reset, etc.).
 * The Bezier curve is red and the B-Spline curve is blue.
 --------------------------
 

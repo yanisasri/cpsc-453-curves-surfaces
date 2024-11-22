@@ -37,7 +37,6 @@ bool isWireframe = true; // wireframe=true and solid-surface=false
 // type 2 = viewing pipeline
 // type 3 = surface of revolution
 // type 4 = tensor product surfaces
-// type 5 = extension???
 int type = 1;
 
 
@@ -119,7 +118,7 @@ public:
 			}
 		}
 
-		if ((type == 1) || (type == 2) || (type == 3)) {
+		if ((type == 1) || (type == 2)) {
 			// press UP key to toggle between bezier and b-spline curves
 			if (key == GLFW_KEY_UP && action == GLFW_PRESS) {
 				isBezier = !isBezier; // change curve type
@@ -140,7 +139,7 @@ public:
 		// press RIGHT arrow key to change to the next exercise/assignment part
 		if (key == GLFW_KEY_RIGHT && action == GLFW_PRESS) {
 			type += 1;
-			if (type == 6) { type = 1; }
+			if (type == 5) { type = 1; }
 
 			cout << "Changed to: ";
 
@@ -148,13 +147,12 @@ public:
 			else if (type == 2) { cout << "2. VIEWING PIPELINE" << endl; }
 			else if (type == 3) { cout << "3. SURFACE OF REVOLUTION" << endl;}
 			else if (type == 4) { cout << "4. TENSOR PRODUCT SURFACES" << endl; }
-			else if (type == 5) { cout << "EXTENSION???" << endl; }
         }
 
 		// press LEFT arrow key to change to the previous exercise/assignment part
 		if (key == GLFW_KEY_LEFT && action == GLFW_PRESS) {
 			type -= 1;
-			if (type == 0) { type = 5; }
+			if (type == 0) { type = 4; }
 
 			cout << "Changed to: ";
 
@@ -162,7 +160,6 @@ public:
 			else if (type == 2) { cout << "2. VIEWING PIPELINE" << endl; }
 			else if (type == 3) { cout << "3. SURFACE OF REVOLUTION" << endl;}
 			else if (type == 4) { cout << "4. TENSOR PRODUCT SURFACES" << endl; }
-			else if (type == 5) { cout << "EXTENSION???" << endl; }
         }
 	}
 
@@ -199,21 +196,16 @@ public:
 				// cout << "Number of control points: " << controlPoints.size() << endl; // debugging
 			}
 		} else if ((type == 2) || (type == 3)) {
+			// move/stop moving camera
 			if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
-				cameraControlActive = !cameraControlActive; 
-				
-				// // debugging
-				// if (cameraControlActive) {
-				// 	std::cout << "Camera control activated." << std::endl;
-				// } else {
-				// 	std::cout << "Camera control deactivated." << std::endl;
-				// }
+				cameraControlActive = !cameraControlActive;
 			}
 		}
 	}
 
 	virtual void cursorPosCallback(double xpos, double ypos) override {
 		if (type == 1) {
+			// move the selected point to follow cursor
 			if (selectedPointIndex != -1) {
 				int width, height;
 				glfwGetWindowSize(window, &width, &height);
@@ -222,6 +214,7 @@ public:
 				controlPoints[selectedPointIndex] = glm::vec2(normX, normY); // update position
 			}
 		} else if (((type == 2) || (type == 3)) && cameraControlActive) {
+			// move camera to follow cursor
 			static double lastX = xpos, lastY = ypos;
 			double deltaX = xpos - lastX;
 			double deltaY = ypos - lastY;
@@ -237,6 +230,7 @@ public:
 
 	virtual void scrollCallback(double xoffset, double yoffset) override {
 		if ((type == 2) || (type == 3)) { 
+			// scroll to zoom in/out
 			camera.setDistance(camera.getDistance() - static_cast<float>(yoffset) * 0.5f);
 			camera.setDistance(glm::clamp(camera.getDistance(), 1.0f, 20.0f));
 			camera.updateCameraPosition();
@@ -375,40 +369,69 @@ void drawBSplineCurve(const std::vector<glm::vec2>& points, GLuint shaderProgram
     glDeleteVertexArrays(1, &VAO);
 }
 
+std::vector<glm::vec3> convertToVec3(const std::vector<glm::vec2>& points) {
+    std::vector<glm::vec3> points3D;
+    for (const auto& point : points) {
+        points3D.push_back(glm::vec3(point.x, point.y, 0.0f)); // z = 0
+    }
+    return points3D;
+}
+
 void drawSurfaceOfRevolution(const std::vector<glm::vec2>& controlPoints, GLuint shaderProgram, bool isWireframe) {
     if (controlPoints.size() < 2) return;
 
-    const int segments = 36; // number of segments around the revolution
-    std::vector<float> vertices;
+	std::vector<glm::vec3> curvePoints = convertToVec3(controlPoints);
 
-    for (size_t i = 0; i < controlPoints.size(); ++i) {
-        for (int j = 0; j <= segments; ++j) {
-            float angle = static_cast<float>(j) / segments * 2.0f * M_PI; // angle for rotation
-            float x = controlPoints[i].x * cos(angle);
-            float z = controlPoints[i].x * sin(angle);
-            float y = controlPoints[i].y;
+	const int segments = 100; // number of segments around the revolution
+    std::vector<glm::vec3> surfacePoints;
+	float angleStep = 2.0f * glm::pi<float>() / segments;
+	
+	for (int i = 0; i < segments; ++i) {
+        float angle = i * angleStep;
+        glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), angle, glm::vec3(0.0f, 1.0f, 0.0f));
 
-            vertices.push_back(x);
-            vertices.push_back(y);
-            vertices.push_back(z);
-            vertices.push_back(0.0f); // r
-            vertices.push_back(1.0f); // g
-            vertices.push_back(0.0f); // b
+        for (const auto& point : curvePoints) {
+            glm::vec4 rotatedPoint = rotationMatrix * glm::vec4(point, 1.0f);
+            surfacePoints.emplace_back(rotatedPoint.x, rotatedPoint.y, rotatedPoint.z);
+        }
+    }
+	
+	std::vector<unsigned int> indices;
+    for (int i = 0; i < segments; ++i) {
+        int nextSegment = (i + 1) % segments; // wrap around to the first segment (for the last one)
+
+        for (size_t j = 0; j < curvePoints.size() - 1; ++j) {
+            int current = i * curvePoints.size() + j;
+            int next = nextSegment * curvePoints.size() + j;
+
+            // for two triangles that make up a quad
+            indices.push_back(current);
+            indices.push_back(next);
+            indices.push_back(next + 1);
+
+            indices.push_back(current);
+            indices.push_back(next + 1);
+            indices.push_back(current + 1);
         }
     }
 
-    GLuint VAO, VBO;
+	GLuint VAO, VBO, EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
 
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, surfacePoints.size() * sizeof(glm::vec3), surfacePoints.data(), GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(0);
+
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 
     glUseProgram(shaderProgram);
 
@@ -418,14 +441,12 @@ void drawSurfaceOfRevolution(const std::vector<glm::vec2>& controlPoints, GLuint
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
-    // draw the surface using triangle strips
-    for (size_t i = 0; i < controlPoints.size() - 1; ++i) {
-        glDrawArrays(GL_TRIANGLE_STRIP, i * (segments + 1), (segments + 1) * 2);
-    }
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
     glDeleteVertexArrays(1, &VAO);
 }
 
@@ -458,6 +479,7 @@ int main() {
 	float aspectRatio = static_cast<float>(width) / height;
 
 	glm::mat4 projection, view;
+	std::vector<glm::vec3> surfacePoints;
 
 	cout << "Started program: 1. BEZIER & B-SPLINE CURVES" << endl;
 	
@@ -506,11 +528,12 @@ int main() {
 			view = camera.getViewMatrix();
 
             glUniformMatrix4fv(glGetUniformLocation(shader_program_default, "view"), 1, GL_FALSE, glm::value_ptr(view));
-            glUniformMatrix4fv(glGetUniformLocation(shader_program_default, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-			
+    		glUniformMatrix4fv(glGetUniformLocation(shader_program_default, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
 			glEnable(GL_LINE_SMOOTH);
 			glEnable(GL_DEPTH_TEST);
 			glEnable(GL_FRAMEBUFFER_SRGB);
+			
 			drawSurfaceOfRevolution(controlPoints, shader_program_default, isWireframe);
 		} else if (type == 4) {
 			// tensor product surfaces

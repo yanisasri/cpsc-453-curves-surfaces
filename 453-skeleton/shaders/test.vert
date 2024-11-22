@@ -4,7 +4,6 @@ layout (location = 1) in vec3 color;
 
 out vec3 fragColor;
 
-
 uniform mat4 view;
 uniform mat4 projection;
 
