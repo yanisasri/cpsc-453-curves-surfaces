@@ -27,11 +27,35 @@
 
 using namespace std;
 
+
 bool isBezier = true; // bezier=true and b-spline=false
 std::vector<glm::vec2> controlPoints;
 int selectedPointIndex = -1; // to track which point is selected
+
 bool cameraControlActive = false; // to track if moving camera or not
 bool isWireframe = true; // wireframe=true and solid-surface=false
+
+bool isOrtho = false; // toggle between perspective and orthographic cameras
+float orthoScale = 1.0f; // scale for orthographic projection
+
+bool isSurface1 = true; // for which surface is being displayed (tensor product surfaces)
+
+// first surface (tensor product surfaces)
+glm::vec3 controlPoints1[5][5] = {
+    {{-2.0f, 0.0f, -2.0f}, {-1.0f, 0.0f, -2.0f}, {0.0f, 0.0f, -2.0f}, {1.0f, 0.0f, -2.0f}, {2.0f, 0.0f, -2.0f}},
+    {{-2.0f, 0.0f, -1.0f}, {-1.0f, 1.0f, -1.0f}, {0.0f, 1.0f, -1.0f}, {1.0f, 1.0f, -1.0f}, {2.0f, 0.0f, -1.0f}},
+    {{-2.0f, 0.0f, 0.0f}, {-1.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f}, {2.0f, 0.0f, 0.0f}},
+    {{-2.0f, 0.0f, 1.0f}, {-1.0f, 1.0f, 1.0f}, {0.0f, 1.0f, 1.0f}, {1.0f, 1.0f, 1.0f}, {2.0f, 0.0f, 1.0f}},
+    {{-2.0f, 0.0f, 2.0f}, {-1.0f, 0.0f, 2.0f}, {0.0f, 0.0f, 2.0f}, {1.0f, 0.0f, 2.0f}, {2.0f, 0.0f, 2.0f}}
+};
+
+// second surface (non-square) (tensor product surfaces)
+glm::vec3 controlPoints2[3][5] = {
+	{{-2.0f, 0.0f, -2.0f}, {-1.0f, 0.0f, -2.0f}, {0.0f, 0.0f, -2.0f}, {1.0f, 0.0f, -2.0f}, {2.0f, 0.0f, -2.0f}},
+    {{-2.0f, 0.0f, -1.0f}, {-1.0f, 1.0f, -1.0f}, {0.0f, 1.0f, -1.0f}, {1.0f, 1.0f, -1.0f}, {2.0f, 0.0f, -1.0f}},
+    {{-2.0f, 0.0f, 0.0f}, {-1.0f, 1.0f, 0.0f}, {0.0f, -1.0f, 0.0f}, {1.0f, 1.0f, 0.0f}, {2.0f, 0.0f, 0.0f}}
+};
+
 
 // type 1 = bezier & b-spline curves
 // type 2 = viewing pipeline
@@ -52,7 +76,13 @@ public:
 	}
 
 	glm::mat4 getProjectionMatrix(float aspectRatio) const {
-		return glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
+		if (isOrtho) {
+			float orthoWidth = orthoScale * aspectRatio;
+			float orthoHeight = orthoScale;
+			return glm::ortho(-orthoWidth, orthoWidth, -orthoHeight, orthoHeight, nearClip, farClip);
+		} else {
+			return glm::perspective(glm::radians(fov), aspectRatio, nearClip, farClip);
+		}
 	}
 
 	void updateCameraPosition() {
@@ -65,6 +95,10 @@ public:
 		distance = 2.5f;
 		azimuth = 0.0f;
 		elevation = glm::radians(30.0f);
+		fov = 45.0f;
+        nearClip = 0.1f;
+        farClip = 100.0f;
+        orthoScale = 1.0f;
 		updateCameraPosition();
 	}
 
@@ -80,6 +114,18 @@ public:
     }
     float getElevation() const { return elevation; }
 
+	void setFOV(float f) { fov = f; }
+    float getFOV() const { return fov; }
+
+    void setNearClip(float near) { nearClip = near; }
+    float getNearClip() const { return nearClip; }
+
+    void setFarClip(float far) { farClip = far; }
+    float getFarClip() const { return farClip; }
+
+    void setOrthoScale(float scale) { orthoScale = scale; }
+    float getOrthoScale() const { return orthoScale; }
+
 private:
 	glm::vec3 target;
 	glm::vec3 up;
@@ -87,6 +133,9 @@ private:
     float azimuth = 0.0f; // horizontal angle
     float elevation = glm::radians(30.0f); // vertical angle
     glm::vec3 position;
+	float fov = 45.0f;
+    float nearClip = 0.1f;
+    float farClip = 100.0f;
 };
 
 
@@ -110,12 +159,63 @@ public:
             }
 		}
 
-		if (type == 2) {
+		if ((type == 2) || (type == 3) || (type == 4)) {
 			// press R key to reset camera
 			if (key == GLFW_KEY_R && action == GLFW_PRESS) {
 				cout << "Camera has reset." << endl;
 				camera.resetCamera();
 			}
+
+			// press O key to toggle between orthographic and perspective cameras
+			if (key == GLFW_KEY_O && action == GLFW_PRESS) {
+                isOrtho = !isOrtho;
+                if (isOrtho) {
+                    cout << "Switched to Orthographic Camera." << endl;
+                } else {
+                    cout << "Switched to Perspective Camera." << endl;
+                }
+            }
+
+			// modify FOV for perspective camera
+			// perspective camera: press F key repetitively to increase the FOV or press SHIFT + F key repetitively to decrease the FOV
+			if (!isOrtho && key == GLFW_KEY_F && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+                if (mods & GLFW_MOD_SHIFT) {
+                    camera.setFOV(camera.getFOV() - 1.0f);
+                } else {
+                    camera.setFOV(camera.getFOV() + 1.0f);
+                }
+                cout << "FOV: " << camera.getFOV() << endl;
+            }
+
+			// modify near clip
+            if (key == GLFW_KEY_N && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+                if (mods & GLFW_MOD_SHIFT) {
+                    camera.setNearClip(camera.getNearClip() - 0.1f);
+                } else {
+                    camera.setNearClip(camera.getNearClip() + 0.1f);
+                }
+                cout << "Near Clip: " << camera.getNearClip() << endl;
+            }
+
+			// modify far clip
+			if (key == GLFW_KEY_A && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+                if (mods & GLFW_MOD_SHIFT) {
+                    camera.setFarClip(camera.getFarClip() - 1.0f);
+                } else {
+                    camera.setFarClip(camera.getFarClip() + 1.0f);
+                }
+                cout << "Far Clip: " << camera.getFarClip() << endl;
+            }
+
+			// modify ortho scale
+            if (isOrtho && key == GLFW_KEY_S && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+                if (mods & GLFW_MOD_SHIFT) {
+                    camera.setOrthoScale(camera.getOrthoScale() - 0.1f);
+                } else {
+                    camera.setOrthoScale(camera.getOrthoScale() + 0.1f);
+                }
+                cout << "Ortho Scale: " << camera.getOrthoScale() << endl;
+            }
 		}
 
 		if ((type == 1) || (type == 2)) {
@@ -127,14 +227,26 @@ public:
 			}
 		}
 
-		if (type == 3) {
-			// press DOWN key to toggle between wireframe and solid surface view
-			if (key == GLFW_KEY_DOWN && action == GLFW_PRESS) {
-				isWireframe = !isWireframe; // change curve type
-				if (isWireframe) { cout << "Changed to WIREFRAME VIEW." << endl; }
-				else { cout << "Changed to SOLID SURFACE VIEW." << endl; }
-			}
+		if ((type == 3) || (type == 4)) {
+			// press UP key to toggle between wireframe and solid surface view
+			if (key == GLFW_KEY_W && action == GLFW_PRESS) {
+                isWireframe = !isWireframe;
+                if (isWireframe) {
+                    cout << "Wireframe mode enabled." << endl;
+                } else {
+                    cout << "Solid surface mode enabled." << endl;
+                }
+            }
 		}
+
+		if (type == 4) {
+            // change surface
+            if (key == GLFW_KEY_UP && action == GLFW_PRESS) {
+                isSurface1 = !isSurface1; 
+                if (isSurface1) { cout << "Switched to surface 1 (5x5)" << endl; }
+				else { cout << "Switched to surface 2 (3x5)" << endl; }
+            }
+        }
 
 		// press RIGHT arrow key to change to the next exercise/assignment part
 		if (key == GLFW_KEY_RIGHT && action == GLFW_PRESS) {
@@ -195,7 +307,7 @@ public:
 				// cout << "Added control point: (" << normX << ", " << normY << ")" << endl; // debugging
 				// cout << "Number of control points: " << controlPoints.size() << endl; // debugging
 			}
-		} else if ((type == 2) || (type == 3)) {
+		} else if ((type == 2) || (type == 3) || (type == 4)) {
 			// move/stop moving camera
 			if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
 				cameraControlActive = !cameraControlActive;
@@ -213,7 +325,7 @@ public:
 				float normY = 1.0f - (ypos / height) * 2.0f;
 				controlPoints[selectedPointIndex] = glm::vec2(normX, normY); // update position
 			}
-		} else if (((type == 2) || (type == 3)) && cameraControlActive) {
+		} else if (((type == 2) || (type == 3) || (type == 4)) && cameraControlActive) {
 			// move camera to follow cursor
 			static double lastX = xpos, lastY = ypos;
 			double deltaX = xpos - lastX;
@@ -229,7 +341,7 @@ public:
 	}
 
 	virtual void scrollCallback(double xoffset, double yoffset) override {
-		if ((type == 2) || (type == 3)) { 
+		if ((type == 2) || (type == 3) || (type == 4)) { 
 			// scroll to zoom in/out
 			camera.setDistance(camera.getDistance() - static_cast<float>(yoffset) * 0.5f);
 			camera.setDistance(glm::clamp(camera.getDistance(), 1.0f, 20.0f));
@@ -396,7 +508,7 @@ void drawSurfaceOfRevolution(const std::vector<glm::vec2>& controlPoints, GLuint
         }
     }
 	
-	std::vector<unsigned int> indices;
+	std::vector<unsigned int> vertices;
     for (int i = 0; i < segments; ++i) {
         int nextSegment = (i + 1) % segments; // wrap around to the first segment (for the last one)
 
@@ -405,13 +517,13 @@ void drawSurfaceOfRevolution(const std::vector<glm::vec2>& controlPoints, GLuint
             int next = nextSegment * curvePoints.size() + j;
 
             // for two triangles that make up a quad
-            indices.push_back(current);
-            indices.push_back(next);
-            indices.push_back(next + 1);
+            vertices.push_back(current);
+            vertices.push_back(next);
+            vertices.push_back(next + 1);
 
-            indices.push_back(current);
-            indices.push_back(next + 1);
-            indices.push_back(current + 1);
+            vertices.push_back(current);
+            vertices.push_back(next + 1);
+            vertices.push_back(current + 1);
         }
     }
 
@@ -425,7 +537,7 @@ void drawSurfaceOfRevolution(const std::vector<glm::vec2>& controlPoints, GLuint
     glBufferData(GL_ARRAY_BUFFER, surfacePoints.size() * sizeof(glm::vec3), surfacePoints.data(), GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertices.size() * sizeof(unsigned int), vertices.data(), GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
@@ -441,7 +553,104 @@ void drawSurfaceOfRevolution(const std::vector<glm::vec2>& controlPoints, GLuint
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
 
-	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, vertices.size(), GL_UNSIGNED_INT, 0);
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
+    glDeleteVertexArrays(1, &VAO);
+}
+
+int binomialCoefficient(int n, int k) {
+    if (k > n) return 0;
+    if (k == 0 || k == n) return 1;
+
+    int coeff = 1;
+    for (int i = 1; i <= k; ++i) {
+        coeff = coeff * (n - i + 1) / i;
+    }
+    return coeff;
+}
+
+float bernsteinPolynomial(int i, int n, float t) {
+    return binomialCoefficient(n, i) * pow(t, i) * pow(1 - t, n - i);
+}
+
+template <size_t Rows, size_t Cols>
+void drawTensorProductSurface(glm::vec3 (&controlPoints)[Rows][Cols], int numRows, int numCols, int uSegments, int vSegments, GLuint shaderProgram, bool isWireframe) {
+    std::vector<glm::vec3> surfacePoints;
+    std::vector<unsigned int> indices;
+	glm::vec3 redcolor(1.0f, 0.0f, 0.0f); // red
+	std::vector<glm::vec3> surfaceColors; 
+
+    // surface points
+    for (int u = 0; u <= uSegments; ++u) {
+        float uParam = static_cast<float>(u) / uSegments;
+        for (int v = 0; v <= vSegments; ++v) {
+            float vParam = static_cast<float>(v) / vSegments;
+
+            glm::vec3 point(0.0f);
+            for (int i = 0; i < numRows; ++i) {
+                for (int j = 0; j < numCols; ++j) {
+                    float bu = bernsteinPolynomial(i, numRows - 1, uParam);
+                    float bv = bernsteinPolynomial(j, numCols - 1, vParam);
+                    point += bu * bv * controlPoints[i][j];
+                }
+            }
+            surfacePoints.push_back(point);
+			surfaceColors.push_back(redcolor);
+        }
+    }
+
+    for (int u = 0; u < uSegments; ++u) {
+        for (int v = 0; v < vSegments; ++v) {
+            int current = u * (vSegments + 1) + v;
+            int next = current + 1;
+            int above = current + (vSegments + 1);
+
+            // two triangles per quad
+            indices.push_back(current);
+            indices.push_back(above);
+            indices.push_back(next);
+
+            indices.push_back(next);
+            indices.push_back(above);
+            indices.push_back(above + 1);
+        }
+    }
+
+    GLuint VAO, VBO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, surfacePoints.size() * sizeof(glm::vec3), surfacePoints.data(), GL_STATIC_DRAW);
+
+    glBufferData(GL_ARRAY_BUFFER, surfacePoints.size() * sizeof(glm::vec3) + surfaceColors.size() * sizeof(glm::vec3), nullptr, GL_STATIC_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, surfacePoints.size() * sizeof(glm::vec3), surfacePoints.data());
+    glBufferSubData(GL_ARRAY_BUFFER, surfacePoints.size() * sizeof(glm::vec3), surfaceColors.size() * sizeof(glm::vec3), surfaceColors.data());
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void*)(surfacePoints.size() * sizeof(glm::vec3)));
+    glEnableVertexAttribArray(1);
+
+    glUseProgram(shaderProgram);
+
+    if (isWireframe) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    } else {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+
+    glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -537,6 +746,21 @@ int main() {
 			drawSurfaceOfRevolution(controlPoints, shader_program_default, isWireframe);
 		} else if (type == 4) {
 			// tensor product surfaces
+			projection = camera.getProjectionMatrix(aspectRatio);
+			view = camera.getViewMatrix();
+
+            glUniformMatrix4fv(glGetUniformLocation(shader_program_default, "view"), 1, GL_FALSE, glm::value_ptr(view));
+            glUniformMatrix4fv(glGetUniformLocation(shader_program_default, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
+			glEnable(GL_LINE_SMOOTH);
+			glEnable(GL_DEPTH_TEST);
+			glEnable(GL_FRAMEBUFFER_SRGB);
+
+			if (isSurface1) {
+				drawTensorProductSurface(controlPoints1, 5, 5, 20, 20, shader_program_default, isWireframe);
+			} else {
+				drawTensorProductSurface(controlPoints2, 3, 5, 20, 20, shader_program_default, isWireframe);
+			}
 		}
 
 		window.swapBuffers();
