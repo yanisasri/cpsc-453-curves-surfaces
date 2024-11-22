@@ -65,3 +65,11 @@ The source files have been uploaded as a zip file into the dropbox.
 cd build
 ./453-skeleton
 ```
+
+If you are having troubles with building (running cmake with the output dropdown / build button at the bottom toolbar), enter the following into the terminal:
+```bash
+cd build
+cmake ..
+make
+./453-skeleton
+```
